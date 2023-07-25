@@ -1,0 +1,21 @@
+<div class="mt-5 body-container">
+  <h1>Hello from Suraj</h1>
+
+  <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div
+      [fxFlex]="100 / gridColumns + '%'"
+      fxFlex.xs="100%"
+      fxFlex.sm="33%"
+      *ngFor="let num of [1, 2, 3, 4, 5, 6]"
+    >
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>Card example {{ num }}</mat-card-title>
+        </mat-card-header>
+        <button (click)="OnClick()">
+          <img mat-card-image class="pic-container" [src]="imgSrc" />
+        </button>
+      </mat-card>
+    </div>
+  </div>
+</div>

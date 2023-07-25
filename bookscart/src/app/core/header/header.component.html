@@ -1,0 +1,37 @@
+<header>
+  <section class="header-content">
+    <h1 class="brand-logo">
+      <a href="#" class="logo">
+        <i><fa-icon [icon]="books"></fa-icon></i>
+        <span class="logo-text">{{ title }}</span>
+      </a>
+    </h1>
+    <nav role="navigation">
+      <ul class="navigation__list-container" data-visible="true">
+        <li class="nav__item">
+          <a class="nav__link" routerLink="/home" routerLinkActive="active"
+            >Home</a
+          >
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" routerLink="/about" routerLinkActive="active"
+            >About</a
+          >
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" routerLink="/product" routerLinkActive="active"
+            >Products</a
+          >
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" routerLink="/contacts" routerLinkActive="active"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <a class="nav__link" routerLink="/cart" routerLinkActive="active"
+      ><fa-icon [icon]="faStar"></fa-icon
+    ></a>
+  </section>
+</header>

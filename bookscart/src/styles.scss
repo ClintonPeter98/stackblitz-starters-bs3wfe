@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  background: hsl(57, 58%, 87%);
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0%;
+  padding-bottom: 0%;
+}
+.footer-container {
+  margin-bottom: 0%;
+}
+.body-container {
+  align-content: center;
+  margin-left: 0%;
+  margin-right: 0%;
+  position: relative;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
