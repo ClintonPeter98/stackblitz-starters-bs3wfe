@@ -1,5 +1,5 @@
 <body class="">
-  <div class="col-lg-3">
+  <div class="col-lg-3" *ngFor="let element of bookList">
     <mat-card
       class="
         mat-card mat-focus-indicator
@@ -7,7 +7,6 @@
         mat-elevation-z2
         card-deck-container
       "
-      *ngFor="let element of bookList"
     >
       <mat-card-content class="mat-card-content image-card">
         <span
