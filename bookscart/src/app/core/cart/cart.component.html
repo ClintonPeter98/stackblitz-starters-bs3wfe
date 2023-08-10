@@ -1,16 +1,49 @@
 <div class="mt-5 body-container">
-  <a>{{ title }}</a>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, atque?
-    Laborum quibusdam, cupiditate temporibus aspernatur, veritatis voluptatem
-    rem eligendi officia, minima ex ut tempora sed autem quia dolores beatae
-    repellat. Id optio odit asperiores, ullam eligendi ratione laboriosam
-    molestiae sit rerum nemo explicabo repudiandae totam corporis, consectetur
-    itaque eveniet. Et pariatur sequi, necessitatibus quasi eius deleniti rerum
-    nostrum totam doloremque inventore est suscipit perspiciatis amet commodi
-    sint quia, blanditiis optio. Corrupti inventore dolor numquam atque esse aut
-    autem, exercitationem quas expedita fuga dolorum rem corporis est, omnis
-    quis impedit consequatur ex perspiciatis eligendi? Repellat ex, sapiente nam
-    non quis inventore!
-  </p>
+  <div class="col-lg-3 card-container">
+    <mat-card
+      class="
+        mat-card mat-focus-indicator
+        book-card
+        mat-elevation-z2
+        card-deck-container
+      "
+      *ngFor="let element of dataService.cartItems"
+    >
+      <mat-card-content class="mat-card-content image-card img-container">
+        <span
+          mattooltipclass="example-tooltip"
+          aria-label="Book title"
+          class="mat-tooltip-trigger"
+          aria-describedby="cdk-describedby-message-1"
+          ><img
+            alt="Book cover image"
+            [src]="imgBasePath + element.coverFileName"
+            class="zoom"
+            alt=""
+        /></span>
+        <!-- [src]="imgBasePath + element.coverFileName"--></mat-card-content
+      >
+      <mat-card-content>
+        <div class="card-title">
+          <strong>{{ element.title }} </strong>
+          <!-- {{ element.title }} -->
+        </div>
+        <p>
+          ₹
+          {{ element.price }}.00
+        </p>
+        <!-- {{ element.price }} -->
+      </mat-card-content>
+      <mat-card-content>
+        <span type="input" text="number">{{ element.qty }}</span>
+        <button
+          type="button"
+          (click)="removeProduct(element)"
+          class="btn btn-primary"
+        >
+          Delete
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

@@ -21,12 +21,15 @@ body {
 
 html,
 body {
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 0.42629551820728295) 0%,
+    rgba(162, 183, 228, 1) 19%,
+    rgba(178, 183, 222, 1) 43%,
+    rgba(179, 214, 214, 1) 58%,
+    rgba(148, 218, 233, 1) 74%
+  );
   height: 100%;
-}
-body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

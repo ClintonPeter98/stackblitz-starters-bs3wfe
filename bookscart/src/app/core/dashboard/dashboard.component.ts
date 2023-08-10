@@ -36,6 +36,10 @@ export class DashboardComponent implements OnInit {
 
   gridColumns = 3;
 
+  public addToCart(element: book) {
+    this.dataService.add(element);
+  }
+
   toggleGridColumns() {
     this.gridColumns = this.gridColumns === 5 ? 4 : 4;
   }

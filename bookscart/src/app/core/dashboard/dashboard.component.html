@@ -1,5 +1,5 @@
-<body class="">
-  <div class="col-lg-3" *ngFor="let element of bookList">
+<body class="dash-body-container">
+  <div class="col-lg-3 card-container" *ngFor="let element of bookList">
     <mat-card
       class="
         mat-card mat-focus-indicator
@@ -8,17 +8,15 @@
         card-deck-container
       "
     >
-      <mat-card-content class="mat-card-content image-card">
+      <mat-card-content class="mat-card-content image-card img-container">
         <span
           mattooltipclass="example-tooltip"
           aria-label="Book title"
           class="mat-tooltip-trigger"
           aria-describedby="cdk-describedby-message-1"
           ><img
-            mat-card-image
-            mat-card-image=""
             alt="Book cover image"
-            class="mat-card-image preview-image img-container"
+            class="zoom"
             [src]="imgBasePath + element.coverFileName"
             alt="" /></span
       ></mat-card-content>
@@ -31,7 +29,11 @@
         <!-- {{ element.price }} -->
       </mat-card-content>
       <mat-card-content>
-        <button type="button" class="btn btn-primary">
+        <button
+          (click)="addToCart(element)"
+          type="button"
+          class="btn btn-primary"
+        >
           <span class="material-symbols-outlined"> add_shopping_cart </span>
           Add to Cart
         </button>
