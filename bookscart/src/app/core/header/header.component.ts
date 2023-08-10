@@ -12,17 +12,13 @@ export class HeaderComponent implements OnInit {
   faStar = faCartShopping;
   books = faBookOpen;
   title = 'Book Cart';
-  count: number = 0;
-  countSub: any;
   cartCount: any;
-  constructor(private dataService: DataService) {}
+  constructor(private cartService: DataService) {}
 
   ngOnInit() {
-    this.countSub = this.dataService.cartUpdates$.subscribe((count) => {
-      // this runs everytime the count changes
-      this.cartCount = count;
+    // Subscribe to changes in the cart count
+    this.cartService.cartitems$.subscribe(() => {
+      this.cartCount = this.cartService.cartcount();
     });
-
-    this.cartCount = this.dataService.cartcount();
   }
 }

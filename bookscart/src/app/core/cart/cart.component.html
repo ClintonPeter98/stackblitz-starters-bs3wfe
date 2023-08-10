@@ -7,7 +7,7 @@
         mat-elevation-z2
         card-deck-container
       "
-      *ngFor="let element of dataService.cartItems"
+      *ngFor="let element of cartService.cartItems"
     >
       <mat-card-content class="mat-card-content image-card img-container">
         <span
@@ -35,7 +35,9 @@
         <!-- {{ element.price }} -->
       </mat-card-content>
       <mat-card-content>
-        <span type="input" text="number">{{ element.qty }}</span>
+        <div>
+          <span type="input" text="number">{{ element.qty }}</span>
+        </div>
         <button
           type="button"
           (click)="removeProduct(element)"

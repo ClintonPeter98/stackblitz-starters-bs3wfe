@@ -10,28 +10,38 @@ import { book } from '../model/bookmodel';
 })
 export class CartComponent implements OnInit {
   title = 'Cart';
-  constructor(public dataService: DataService) {}
+  constructor(public cartService: DataService) {
+    this.cartService.cartItems$.subscribe((cartItems) => {
+      this.cartItems = cartItems;
+    });
+  }
   bookList: book[] = [];
   public count: number = 0;
   imgBasePath = environment.ImageUrl;
+
+  cartItems: book[] = [];
+
+  updateQuantity(itemId: number) {
+    const updatedItem = this.cartItems.find((item) => item.bookId === itemId);
+    if (updatedItem) {
+      this.cartService.updateCartItemQuantity(itemId, updatedItem.qty);
+    }
+  }
+
   ngOnInit() {
-    this.dataService.cartUpdates$.subscribe(() => {
-      this.count = this.dataService.cartcount();
-      this.bookList = this.dataService.cartItems;
+    this.cartService.cartitems$.subscribe(() => {
+      this.count = this.cartService.cartcount();
+      this.bookList = this.cartService.cartItems;
     });
   }
   public removeProduct(element: book) {
-    console.log(this.dataService);
-    this.dataService.cartItems.splice(
-      this.dataService.cartItems.findIndex(
-        (element) => element.bookId === element.bookId
-      ),
-      1
-    );
-    this.count = this.dataService.cartcount();
+    this.cartService.cartcount();
+
+    this.cartService.removeProduct(element);
+    console.log(this.cartService.cartcount());
   }
   public chngQuantity() {
-    this.count = this.dataService.cartcount();
+    this.count = this.cartService.cartItems.length;
     console.log(this.count);
   }
 }

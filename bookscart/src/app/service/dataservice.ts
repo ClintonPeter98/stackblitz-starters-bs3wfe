@@ -3,14 +3,30 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { book } from '../core/model/bookmodel';
 import { CartProduct } from '../core/model/CartProduct';
-import { ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   constructor(private http: HttpClient) {}
-  private cartUpdates = new Subject<string>();
-  public cartUpdates$ = this.cartUpdates.asObservable();
+  private cartUpdates = new Subject<any>();
+  public cartitems$ = this.cartUpdates.asObservable();
+
+  private cartItem: book[] = [];
+  cartItems$ = new BehaviorSubject<book[]>(this.cartItem);
+
+  // ... other methods to update cart items ...
+
+  updateCartItemQuantity(itemId: number, newQuantity: number) {
+    const itemIndex = this.cartItems.findIndex(
+      (item) => item.bookId === itemId
+    );
+
+    if (itemIndex !== -1) {
+      this.cartItems[itemIndex].qty = newQuantity;
+      this.cartItems$.next(this.cartItems);
+    }
+  }
 
   getBookList = () => {
     return this.http.get<book[]>(environment.baseURl + 'Book');
@@ -32,5 +48,13 @@ export class DataService {
       this.cartItems.push(product);
     }
     this.cartUpdates.next(this.cartItems.length.toString());
+  }
+
+  public removeProduct(element: book) {
+    this.cartItems.splice(
+      this.cartItems.findIndex((element) => element.bookId === element.bookId),
+      1
+    );
+    this.cartUpdates.next(this.cartItems.length);
   }
 }
