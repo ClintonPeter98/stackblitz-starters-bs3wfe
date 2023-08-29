@@ -1,43 +1,57 @@
 <body class="dash-body-container">
-  <div class="col-lg-3 card-container" *ngFor="let element of bookList">
-    <mat-card
-      class="
-        mat-card mat-focus-indicator
-        book-card
-        mat-elevation-z2
-        card-deck-container
-      "
-    >
-      <mat-card-content class="mat-card-content image-card img-container">
-        <span
-          mattooltipclass="example-tooltip"
-          aria-label="Book title"
-          class="mat-tooltip-trigger"
-          aria-describedby="cdk-describedby-message-1"
-          ><img
-            alt="Book cover image"
-            class="zoom"
-            [src]="imgBasePath + element.coverFileName"
-            alt="" /></span
-      ></mat-card-content>
-      <mat-card-content>
-        <div class="card-title">
-          <strong>{{ element.title }} </strong>
-          <!-- {{ element.title }} -->
+  <div class="row no-gutters pt-3">
+    <div class="col-md-3 col-sm-12"></div>
+    <div class="col mb-3">
+      <div class="d-flex justify-content-start card-deck-container mb-4">
+        <div class="a-container" *ngFor="let element of bookList">
+          <mat-card
+            class="
+              mat-card mat-focus-indicator
+              book-card
+              mat-elevation-z2
+              cards-pos
+            "
+          >
+            <mat-card-content class="mat-card-content image-card">
+              <span
+                mattooltipclass="example-tooltip"
+                aria-label="Book title"
+                class="mat-tooltip-trigger"
+                aria-describedby="cdk-describedby-message-1"
+                ><img
+                  alt="Book cover image"
+                  class="zoom"
+                  [src]="imgBasePath + element.coverFileName"
+                  alt=""
+              /></span>
+              <div class="">
+                <span class="text">
+                  <b>{{ element.title }}</b>
+                </span>
+                <!-- {{ element.title }} -->
+              </div>
+              <p>₹{{ element.price }}.00</p>
+              <div>
+                <button
+                  (click)="addToCart(element)"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  <span class="material-symbols-outlined">
+                    add_shopping_cart
+                  </span>
+                  Add to Cart
+                </button>
+              </div>
+              <!-- {{ element.price }} -->
+            </mat-card-content>
+            <!-- <mat-card-content>
+             
+            </mat-card-content> -->
+            <!-- <mat-card-content> </mat-card-content> -->
+          </mat-card>
         </div>
-        <p>₹{{ element.price }}.00</p>
-        <!-- {{ element.price }} -->
-      </mat-card-content>
-      <mat-card-content>
-        <button
-          (click)="addToCart(element)"
-          type="button"
-          class="btn btn-primary"
-        >
-          <span class="material-symbols-outlined"> add_shopping_cart </span>
-          Add to Cart
-        </button>
-      </mat-card-content>
-    </mat-card>
+      </div>
+    </div>
   </div>
 </body>
