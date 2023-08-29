@@ -1,0 +1,34 @@
+<mat-nav-list
+  ><mat-list-item
+    routerlink="/"
+    class="mat-list-item mat-nav-list mat-focus-indicator active-category"
+    tabindex="0"
+    ><div class="active-category mat-list-item-content">
+      <div mat-ripple="" class="mat-ripple mat-list-item-ripple"></div>
+      <div class="mat-list-text"></div>
+      <a>All Categories</a>
+    </div></mat-list-item
+  ><mat-divider
+    role="separator"
+    class="mat-divider"
+    aria-orientation="horizontal"
+  ></mat-divider
+></mat-nav-list>
+<div *ngFor="let element of categoryList">
+  <mat-nav-list
+    routerlink="/filter"
+    class="mat-list-item mat-focus-indicator ng-star-inserted"
+    tabindex="0"
+  >
+    <mat-list-item>
+      <div mat-ripple="" class="mat-ripple mat-list-item-ripple"></div>
+      <div class="mat-list-text"></div>
+      <a>{{ element.categoryName }}</a></mat-list-item
+    >
+    <mat-divider
+      role="separator"
+      class="mat-divider"
+      aria-orientation="horizontal"
+    ></mat-divider
+  ></mat-nav-list>
+</div>

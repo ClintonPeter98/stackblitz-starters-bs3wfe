@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment.development';
 import { book } from '../core/model/bookmodel';
 import { CartProduct } from '../core/model/CartProduct';
 import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
+import { category } from '../core/model/category';
 @Injectable({
   providedIn: 'root',
 })
@@ -27,6 +28,11 @@ export class DataService {
       this.cartItems$.next(this.cartItems);
     }
   }
+  getCategoryList = () => {
+    return this.http.get<category[]>(
+      environment.baseURl + 'Book/GetCategoriesList'
+    );
+  };
 
   getBookList = () => {
     return this.http.get<book[]>(environment.baseURl + 'Book');

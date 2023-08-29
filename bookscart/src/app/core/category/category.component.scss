@@ -1,0 +1,23 @@
+.active-category {
+  background-color: #fb641b;
+}
+.mat-list-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 16px;
+  position: relative;
+  height: inherit;
+}
+.mat-nav-list {
+  cursor: pointer;
+  outline: none;
+}
+
+.mat-divider {
+  display: block;
+  margin: 5px;
+  border-top-width: 1px;
+  border-top-style: solid;
+}

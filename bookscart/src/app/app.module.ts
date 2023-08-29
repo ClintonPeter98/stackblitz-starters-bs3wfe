@@ -17,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CategoryComponent } from './core/category/category.component';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AboutComponent,
     ProductComponent,
     ContactComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCardModule,
     HttpClientModule,
     MatTooltipModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
