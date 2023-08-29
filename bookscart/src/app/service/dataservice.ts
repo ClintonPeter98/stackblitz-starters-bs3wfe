@@ -54,6 +54,7 @@ export class DataService {
       this.cartItems.push(product);
     }
     this.cartUpdates.next(this.cartItems.length.toString());
+    alert('item added to cart');
   }
 
   public removeProduct(element: book) {
@@ -62,5 +63,6 @@ export class DataService {
       1
     );
     this.cartUpdates.next(this.cartItems.length);
+    alert('item removed from cart');
   }
 }
