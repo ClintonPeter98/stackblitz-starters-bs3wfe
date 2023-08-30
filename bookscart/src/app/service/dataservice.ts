@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { book } from '../core/model/bookmodel';
 import { CartProduct } from '../core/model/CartProduct';
-import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
 import { category } from '../core/model/category';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
   private cartUpdates = new Subject<any>();
   public cartitems$ = this.cartUpdates.asObservable();
 
@@ -54,7 +55,7 @@ export class DataService {
       this.cartItems.push(product);
     }
     this.cartUpdates.next(this.cartItems.length.toString());
-    alert('item added to cart');
+    this.openNotification('Product added to cart.');
   }
 
   public removeProduct(element: book) {
@@ -63,6 +64,21 @@ export class DataService {
       1
     );
     this.cartUpdates.next(this.cartItems.length);
-    alert('item removed from cart');
+    this.openNotification('Product removed from cart.');
+  }
+  openNotification(message: string) {
+    this.snackBar.open(message, 'Dismiss', {
+      duration: 3000, // Display duration in milliseconds
+    });
+  }
+
+  private selectedCategorySubject = new BehaviorSubject<string | null>(null);
+
+  setSelectedCategory(category: string | null): void {
+    this.selectedCategorySubject.next(category);
+  }
+
+  getSelectedCategory(): Observable<string | null> {
+    return this.selectedCategorySubject.asObservable();
   }
 }

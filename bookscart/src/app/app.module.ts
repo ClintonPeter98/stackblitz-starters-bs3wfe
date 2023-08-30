@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CategoryComponent } from './core/category/category.component';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { MatListModule } from '@angular/material/list';
     HttpClientModule,
     MatTooltipModule,
     MatListModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

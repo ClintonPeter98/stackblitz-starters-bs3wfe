@@ -1,6 +1,6 @@
-.active-category {
-  background-color: #fb641b;
-}
+// .active-category {
+//   background-color: #fb641b;
+// }
 .mat-list-content {
   display: flex;
   flex-direction: row;
@@ -18,4 +18,15 @@
 .mat-divider {
   display: block;
   border-top-style: solid;
+}
+.category-item {
+  cursor: pointer;
+}
+
+.category-item.active {
+  background-color: #fb641b;
+  color: #fff;
+}
+.all-cat {
+  // background-color: palevioletred;
 }
