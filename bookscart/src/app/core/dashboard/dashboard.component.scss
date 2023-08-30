@@ -12,6 +12,8 @@
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
+  margin-left: 268px;
+  position: relative;
 }
 .card-deck-container {
   flex-flow: row wrap;
@@ -111,9 +113,14 @@
   padding-top: 8px;
   display: block;
   -webkit-tap-highlight-color: transparent;
+  position: fixed;
+  z-index: 1;
 }
 
 .cart-button {
   border-color: transparent;
   background-color: #3f51b5;
+}
+.filter-container {
+  position: fixed;
 }

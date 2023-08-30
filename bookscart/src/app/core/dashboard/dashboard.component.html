@@ -10,7 +10,9 @@
         mat-elevation-z4
       "
     >
-      <app-category></app-category>
+      <div class="filter-container">
+        <app-category></app-category>
+      </div>
     </div>
     <div class="col mb-3">
       <div class="d-flex justify-content-start card-deck-container mb-4">
@@ -48,20 +50,14 @@
                 <button
                   (click)="addToCart(element)"
                   type="button"
-                  class="cart-button btn btn-primary"
+                  class="btn btn-primary"
                 >
-                  <span class="material-symbols-outlined">
-                    add_shopping_cart
-                  </span>
+                  <fa-icon [icon]="faStar"></fa-icon>
                   Add to Cart
                 </button>
               </div>
               <!-- {{ element.price }} -->
             </mat-card-content>
-            <!-- <mat-card-content>
-             
-            </mat-card-content> -->
-            <!-- <mat-card-content> </mat-card-content> -->
           </mat-card>
         </div>
       </div>

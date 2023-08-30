@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { DataService } from '../../service/dataservice';
 import { book } from '../model/bookmodel';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(public dataService: DataService, private http: HttpClient) {
     this.getBookList();
   }
+  faStar = faCartShopping;
 
   imgBasePath = environment.ImageUrl;
   title = 'Dash Board';
@@ -25,7 +27,6 @@ export class DashboardComponent implements OnInit {
   bookList: book[] = [];
   selectedCategory: string | null = null;
   ngOnInit() {
-    console.log('hi');
     this.dataService.getSelectedCategory().subscribe((category) => {
       this.selectedCategory = category;
       this.updateBookList();
@@ -36,7 +37,6 @@ export class DashboardComponent implements OnInit {
       if (res.length > 0) {
         this.bookList = res;
       }
-      console.log(this.bookList);
     });
   }
 
@@ -52,7 +52,6 @@ export class DashboardComponent implements OnInit {
 
   updateBookList(): void {
     this.dataService.getBookList().subscribe((res) => {
-      console.log(this.selectedCategory);
       if (this.selectedCategory) {
         // Filter books based on the selected category
         this.bookList = res.filter(
