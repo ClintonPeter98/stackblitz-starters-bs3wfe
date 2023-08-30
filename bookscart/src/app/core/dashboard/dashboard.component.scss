@@ -12,7 +12,8 @@
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
-  margin-left: 268px;
+  // margin-left: 268px;
+  margin-left: 280px;
   position: relative;
 }
 .card-deck-container {
@@ -98,29 +99,16 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.category-container {
-  position: relative;
-  width: 100%;
-  max-width: 250px;
-  height: 100%;
-  max-height: 400px;
-  background-color: #ffffff;
-}
+
 .sp {
   margin-left: 50px;
-}
-.mat-list-base {
-  padding-top: 8px;
-  display: block;
-  -webkit-tap-highlight-color: transparent;
-  position: fixed;
-  z-index: 1;
 }
 
 .cart-button {
   border-color: transparent;
   background-color: #3f51b5;
 }
-.filter-container {
-  position: fixed;
+
+.aa {
+  margin: 10px;
 }

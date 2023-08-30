@@ -1,45 +1,74 @@
-<mat-nav-list
-  ><mat-list-item
-    routerlink="/"
-    class="
-      category-item
-      all-cat
-      mat-list-item mat-nav-list mat-focus-indicator
-      active-category
-    "
-    [class.active]="'0' === activeCategory"
-    (click)="setDefaultActiveCategory(0)"
-    tabindex="0"
-    ><div class="category-item active-category mat-list-item-content">
-      <div mat-ripple="" class="mat-ripple mat-list-item-ripple"></div>
-      <div class="mat-list-text"></div>
-      <a>All Categories</a>
-    </div></mat-list-item
-  ><mat-divider
-    role="separator"
-    class="mat-divider"
-    aria-orientation="horizontal"
-  ></mat-divider
-></mat-nav-list>
-<div *ngFor="let element of categoryList">
+<div
+  class="
+    filter-container
+    category-container
+    mat-nav-list mat-list-base
+    p-1
+    mat-elevation-z4
+  "
+>
   <mat-nav-list
-    routerlink="/filter"
-    class="mat-list-item mat-focus-indicator ng-star-inserted"
-    tabindex="1"
-  >
-    <mat-list-item
-      class="category-item"
-      [class.active]="element.categoryName === activeCategory"
-      (click)="setActiveCategory(element)"
-    >
-      <div mat-ripple="" class="mat-ripple mat-list-item-ripple"></div>
-      <div class="mat-list-text"></div>
-      <a>{{ element.categoryName }}</a></mat-list-item
-    >
-    <mat-divider
+    ><mat-list-item
+      routerlink="/"
+      class="
+        category-item
+        mat-list-item mat-nav-list mat-focus-indicator
+        active-category
+      "
+      [class.active]="'0' === activeCategory"
+      (click)="setDefaultActiveCategory(0)"
+      tabindex="0"
+      ><div class="category-item active-category mat-list-item-content">
+        <div mat-ripple="" class="mat-ripple mat-list-item-ripple"></div>
+        <div class="mat-list-text"></div>
+        <a>All Categories</a>
+      </div></mat-list-item
+    ><mat-divider
       role="separator"
       class="mat-divider"
       aria-orientation="horizontal"
     ></mat-divider
   ></mat-nav-list>
+  <div *ngFor="let element of categoryList">
+    <mat-nav-list
+      routerlink="/filter"
+      class="mat-list-item mat-focus-indicator ng-star-inserted"
+      tabindex="1"
+    >
+      <mat-list-item
+        class="category-item"
+        [class.active]="element.categoryName === activeCategory"
+        (click)="setActiveCategory(element)"
+      >
+        <div mat-ripple="" class="mat-ripple mat-list-item-ripple"></div>
+        <div class="mat-list-text"></div>
+        <a>{{ element.categoryName }}</a></mat-list-item
+      >
+      <mat-divider
+        role="separator"
+        class="mat-divider"
+        aria-orientation="horizontal"
+      ></mat-divider
+    ></mat-nav-list>
+  </div>
+
+  <div class="price-filter">
+    <strong>Price filter</strong>
+
+    <div class="price">
+      <mat-slider
+        [min]="minPrice"
+        [max]="maxPrice"
+        [(ngModel)]="selectedPrice"
+        (input)="updatePriceFilter()"
+        tickInterval="1"
+        thumbLabel
+      >
+        <input matSliderThumb [(ngModel)]="selectedPrice" #slider />
+      </mat-slider>
+    </div>
+    <div>
+      <p>{{ minPrice }} to {{ maxPrice }}</p>
+    </div>
+  </div>
 </div>

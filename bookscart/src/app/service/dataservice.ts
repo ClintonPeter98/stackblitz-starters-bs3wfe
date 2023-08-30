@@ -81,4 +81,13 @@ export class DataService {
   getSelectedCategory(): Observable<string | null> {
     return this.selectedCategorySubject.asObservable();
   }
+  private priceFilterSubject = new BehaviorSubject<number | null>(null);
+
+  public setPriceFilter(price: number | null): void {
+    this.priceFilterSubject.next(price);
+  }
+
+  public getPriceFilter(): Observable<number | null> {
+    return this.priceFilterSubject.asObservable();
+  }
 }

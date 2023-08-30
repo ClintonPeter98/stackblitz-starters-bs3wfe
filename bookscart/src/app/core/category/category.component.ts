@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DataService } from '../../service/dataservice';
 import { HttpClient } from '@angular/common/http';
 import { category } from '../model/category';
@@ -9,9 +9,16 @@ import { category } from '../model/category';
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent {
-  constructor(public dataService: DataService, private http: HttpClient) {
+  constructor(
+    public dataService: DataService,
+    private http: HttpClient,
+    private cdRef: ChangeDetectorRef
+  ) {
     this.getcategoryList();
   }
+  minPrice = 112;
+  maxPrice = 5000;
+  selectedPrice = 250;
 
   activeCategory: string | null = null;
   categoryList: category[] = [];
@@ -30,5 +37,9 @@ export class CategoryComponent {
   setActiveCategory(category: category): void {
     this.activeCategory = category.categoryName;
     this.dataService.setSelectedCategory(category.categoryName);
+  }
+  updatePriceFilter(): void {
+    console.log(this.selectedPrice);
+    this.dataService.setPriceFilter(this.selectedPrice);
   }
 }
