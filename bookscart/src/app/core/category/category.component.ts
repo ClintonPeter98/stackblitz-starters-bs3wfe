@@ -28,7 +28,6 @@ export class CategoryComponent {
     this.dataService.setSelectedCategory(null);
   }
   setActiveCategory(category: category): void {
-    console.log(category);
     this.activeCategory = category.categoryName;
     this.dataService.setSelectedCategory(category.categoryName);
   }

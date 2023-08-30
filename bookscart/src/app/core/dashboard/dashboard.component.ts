@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
     console.log('hi');
     this.dataService.getSelectedCategory().subscribe((category) => {
       this.selectedCategory = category;
-      // Update the list of books based on the selected category
       this.updateBookList();
     });
   }
@@ -64,7 +63,5 @@ export class DashboardComponent implements OnInit {
         this.bookList = res;
       }
     });
-
-    // Logic to update the list of books based on the selected category
   }
 }
