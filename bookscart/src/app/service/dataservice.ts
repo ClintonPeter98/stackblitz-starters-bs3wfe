@@ -14,9 +14,15 @@ export class DataService {
   private cartUpdates = new Subject<any>();
   public cartitems$ = this.cartUpdates.asObservable();
 
+  private bookId: number = 0;
   private cartItem: book[] = [];
   cartItems$ = new BehaviorSubject<book[]>(this.cartItem);
+  private bookIdSubject = new BehaviorSubject<number>(this.bookId);
+  bookId$ = this.bookIdSubject.asObservable();
 
+  setBookId(bookId: number) {
+    this.bookIdSubject.next(bookId);
+  }
   // ... other methods to update cart items ...
 
   updateCartItemQuantity(itemId: number, newQuantity: number) {
@@ -37,6 +43,10 @@ export class DataService {
 
   getBookList = () => {
     return this.http.get<book[]>(environment.baseURl + 'Book');
+  };
+
+  getBookById = (bookId: number) => {
+    return this.http.get<book>(environment.baseURl + 'book/' + bookId);
   };
   cartcount(): number {
     return this.cartItems.reduce((c, t1) => t1.qty + c, 0);

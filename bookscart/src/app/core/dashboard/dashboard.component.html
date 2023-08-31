@@ -29,10 +29,16 @@
                   alt=""
               /></span>
               <div class="">
-                <span class="text">
-                  <b>{{ element.title }}</b>
-                </span>
-                <!-- {{ element.title }} -->
+                <a
+                  routerLink="/productpage"
+                  routerLinkActive="active"
+                  (click)="sendBookId(element.bookId)"
+                >
+                  <span class="text">
+                    <b>{{ element.title }}</b>
+                  </span>
+                  <!-- {{ element.title }} -->
+                </a>
               </div>
               <p>₹{{ element.price }}.00</p>
               <div>

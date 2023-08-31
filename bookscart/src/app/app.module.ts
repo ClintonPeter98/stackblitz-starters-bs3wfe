@@ -22,6 +22,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
+import { ProductpageComponent } from './core/productpage/productpage.component';
+import { SimilarbooksComponent } from './core/similarbooks/similarbooks.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,8 @@ import { MatInputModule } from '@angular/material/input';
     ProductComponent,
     ContactComponent,
     CategoryComponent,
+    ProductpageComponent,
+    SimilarbooksComponent,
   ],
   imports: [
     BrowserModule,

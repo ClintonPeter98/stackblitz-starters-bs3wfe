@@ -24,9 +24,17 @@
         <!-- [src]="imgBasePath + element.coverFileName"--></mat-card-content
       >
       <mat-card-content>
-        <div class="card-title">
-          <strong>{{ element.title }} </strong>
-          <!-- {{ element.title }} -->
+        <div class="">
+          <a
+            routerLink="/productpage"
+            routerLinkActive="active"
+            (click)="sendBookId(element.bookId)"
+          >
+            <span class="text">
+              <b>{{ element.title }}</b>
+            </span>
+            <!-- {{ element.title }} -->
+          </a>
         </div>
         <p>
           ₹

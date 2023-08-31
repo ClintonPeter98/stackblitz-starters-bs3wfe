@@ -44,4 +44,7 @@ export class CartComponent implements OnInit {
     this.count = this.cartService.cartItems.length;
     console.log(this.count);
   }
+  sendBookId(bookId: number): void {
+    this.cartService.setBookId(bookId);
+  }
 }

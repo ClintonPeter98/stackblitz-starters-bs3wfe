@@ -1,0 +1,55 @@
+<div class="docs-example-viewer-wrapper">
+  <div class="docs-example-viewer-title-spacer head">
+    <div class="docs-example-viewer-title-spacer"><h1>Book Details</h1></div>
+  </div>
+</div>
+<div class="docs-example-viewer-body row ng-star-inserted">
+  <div class="col-md-3 col-sm-12">
+    <mat-card-content class="mat-card-content image-card">
+      <img
+        mat-card-image=""
+        alt="No image available"
+        class="mat-card-image preview-image"
+        [src]="imgBasePath + bookDetail.coverFileName"
+    /></mat-card-content>
+  </div>
+  <div class="col-md-5 col-sm-12">
+    <table class="table">
+      <tr >
+        <td >
+          <strong >Title</strong>
+        </td>
+        <td >{{ bookDetail.title }}</td>
+      </tr>
+      <tr >
+        <td >
+          <strong >Author</strong>
+        </td>
+        <td >{{ bookDetail.author }}</td>
+      </tr>
+      <tr >
+        <td >
+          <strong >Category</strong>
+        </td>
+        <td >{{ bookDetail.category }}</td>
+      </tr>
+      <tr >
+        <td >
+          <strong >Price</strong>
+        </td>
+        <td >₹{{ bookDetail.price }}.00</td>
+      </tr>
+    </table>
+    <div fxlayoutgap="10px grid">
+      <button
+        (click)="addToCart(bookDetail)"
+        type="button"
+        class="btn btn-primary"
+      >
+        <fa-icon [icon]="faStar"></fa-icon>
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+<app-similarbooks></app-similarbooks>

@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit {
   title = 'Dash Board';
   value = '';
   apiUrl: string = environment.baseURl + 'Book';
-
   clearValue() {
     this.value = '';
   }
@@ -78,5 +77,8 @@ export class DashboardComponent implements OnInit {
         this.bookList = res;
       }
     });
+  }
+  sendBookId(bookId: number): void {
+    this.dataService.setBookId(bookId);
   }
 }
