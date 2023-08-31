@@ -35,10 +35,8 @@ export class CartComponent implements OnInit {
     });
   }
   public removeProduct(element: book) {
-    this.cartService.cartcount();
-
     this.cartService.removeProduct(element);
-    console.log(this.cartService.cartcount());
+    this.cartService.cartcount();
   }
   public chngQuantity() {
     this.count = this.cartService.cartItems.length;
