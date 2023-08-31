@@ -64,8 +64,13 @@
       tickInterval="1"
       thumbLabel
     >
-      <input matSliderThumb [(ngModel)]="selectedPrice" #slider />
-    </mat-slider>
+      <input
+        matSliderThumb
+        (input)="onSliderChange($event)"
+        [(ngModel)]="selectedPrice"
+        #slider
+      /> </mat-slider
+    ><span class="slider-value">{{ selectedPrice }}</span>
   </div>
   <div>
     <p>{{ minPrice }} to {{ maxPrice }}</p>

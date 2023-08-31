@@ -16,8 +16,8 @@ export class CategoryComponent {
   ) {
     this.getcategoryList();
   }
-  minPrice = 112;
-  maxPrice = 5000;
+  minPrice = 111;
+  maxPrice = 2111;
   selectedPrice = 250;
 
   activeCategory: string | null = null;
@@ -41,5 +41,8 @@ export class CategoryComponent {
   updatePriceFilter(): void {
     console.log(this.selectedPrice);
     this.dataService.setPriceFilter(this.selectedPrice);
+  }
+  onSliderChange(event: Event) {
+    this.selectedPrice = +(<HTMLInputElement>event.target).value;
   }
 }
