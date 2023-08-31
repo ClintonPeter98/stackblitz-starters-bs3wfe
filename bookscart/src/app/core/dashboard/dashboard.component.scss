@@ -1,11 +1,3 @@
-.col {
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 1000px;
-  width: 100%;
-  margin-left: 80px;
-  position: relative;
-}
 .card-deck-container {
   flex-flow: row wrap;
   -ms-box-orient: horizontal;
@@ -78,9 +70,8 @@
   margin-bottom: 15px;
 }
 .cards-pos {
-  padding: inherit;
-  padding-bottom: 0px;
-  padding-top: 0px;
+  max-width: 250px;
+  width: 100%;
 }
 .text {
   display: block;
@@ -92,13 +83,18 @@
 
 .sp {
   margin-left: 50px;
+  display: flex;
+  /* flex-direction: row; */
+  flex-wrap: nowrap;
+  /* align-items: baseline; */
+  /* justify-content: center;*/
 }
 
 .cart-button {
   border-color: transparent;
   background-color: #3f51b5;
 }
-
-.aa {
-  margin: 10px;
+.filter-card {
+  max-width: 250px;
+  width: 100%;
 }

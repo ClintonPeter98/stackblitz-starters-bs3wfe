@@ -1,6 +1,3 @@
-// .active-category {
-//   background-color: #fb641b;
-// }
 .mat-list-content {
   display: flex;
   flex-direction: row;
@@ -39,6 +36,8 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f8f8f8;
+  max-width: 250px;
+  width: 100%;
 }
 
 .mat-slider-horizontal {
@@ -49,18 +48,13 @@
 .mat-form-field {
   width: 80%; /* Adjust the width as needed */
 }
-.filter-container {
-  position: fixed;
-}
 .mat-list-base {
   padding-top: 8px;
   display: block;
   -webkit-tap-highlight-color: transparent;
-  position: fixed;
   z-index: 1;
 }
 .category-container {
-  position: fixed;
   width: 100%;
   max-width: 250px;
   height: 100%;

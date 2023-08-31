@@ -51,24 +51,23 @@
       ></mat-divider
     ></mat-nav-list>
   </div>
+</div>
+<div class="price-filter">
+  <strong>Price filter</strong>
 
-  <div class="price-filter">
-    <strong>Price filter</strong>
-
-    <div class="price">
-      <mat-slider
-        [min]="minPrice"
-        [max]="maxPrice"
-        [(ngModel)]="selectedPrice"
-        (input)="updatePriceFilter()"
-        tickInterval="1"
-        thumbLabel
-      >
-        <input matSliderThumb [(ngModel)]="selectedPrice" #slider />
-      </mat-slider>
-    </div>
-    <div>
-      <p>{{ minPrice }} to {{ maxPrice }}</p>
-    </div>
+  <div class="price">
+    <mat-slider
+      [min]="minPrice"
+      [max]="maxPrice"
+      [(ngModel)]="selectedPrice"
+      (input)="updatePriceFilter()"
+      tickInterval="1"
+      thumbLabel
+    >
+      <input matSliderThumb [(ngModel)]="selectedPrice" #slider />
+    </mat-slider>
+  </div>
+  <div>
+    <p>{{ minPrice }} to {{ maxPrice }}</p>
   </div>
 </div>
