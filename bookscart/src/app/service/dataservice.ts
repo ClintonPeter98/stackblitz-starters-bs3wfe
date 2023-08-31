@@ -45,6 +45,12 @@ export class DataService {
     return this.http.get<book[]>(environment.baseURl + 'Book');
   };
 
+  getSimilarBookById = (bookId: number) => {
+    return this.http.get<book[]>(
+      environment.baseURl + 'Book/GetSimilarBooks/' + bookId
+    );
+  };
+
   getBookById = (bookId: number) => {
     return this.http.get<book>(environment.baseURl + 'book/' + bookId);
   };

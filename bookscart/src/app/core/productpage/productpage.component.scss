@@ -1,27 +1,26 @@
-.head {
-  background-color: azure;
-}
 .docs-example-viewer-title-spacer {
+  border-radius: 10px;
   flex: 1 1 auto;
-  display: flex;
-  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: azure;
 }
 .docs-example-viewer-wrapper {
   border: 0;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
+  // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
   margin: 1em auto;
   border-radius: 4px;
 }
-.docs-example-viewer-title-spacer {
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: space-between;
-}
+
 .docs-example-viewer-body {
   padding: 15px;
   align-content: center;
   align-items: center;
   display: flex;
+  border-radius: 10px;
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .mat-card-image {
   width: calc(100% + 32px);
@@ -44,4 +43,8 @@
   text-indent: initial;
   border-spacing: 2px;
   border-color: gray;
+}
+
+.al-title {
+  margin: 10px;
 }

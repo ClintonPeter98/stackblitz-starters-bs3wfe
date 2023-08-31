@@ -1,0 +1,93 @@
+.card-deck-container {
+  flex-flow: row wrap;
+  -ms-box-orient: horizontal;
+  -ms-box-direction: normal;
+  -webkit-box-flex: 1;
+  -ms-box-flex: 1;
+  -moz-box-flex: 1;
+  width: 100%;
+}
+.card-container {
+  margin-bottom: 10px;
+}
+.zoom {
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  transition: transform 0.2s; /* Animation */
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(
+    130%
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.img-container {
+  max-width: 200px;
+  width: 100%;
+  max-height: 400px;
+  height: 100%;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+}
+
+.dash-body-container {
+  display: flex;
+  margin-top: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.p-1 {
+  padding: 0.25rem !important;
+}
+.d-flex {
+  display: flex !important;
+}
+.pt-3 {
+  padding-top: 1rem !important;
+}
+.a-container {
+  max-width: 213px;
+  width: 100%;
+  max-height: 224px;
+  padding: 10px;
+  height: 100%;
+  padding-bottom: 350px;
+  margin-bottom: 15px;
+}
+.cards-pos {
+  max-width: 250px;
+  width: 100%;
+}
+.text {
+  display: block;
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sp {
+  margin-left: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.cart-button {
+  border-color: transparent;
+  background-color: #3f51b5;
+}
+.filter-card {
+  max-width: 250px;
+  width: 100%;
+}
