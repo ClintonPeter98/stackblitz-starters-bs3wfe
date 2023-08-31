@@ -1,58 +1,94 @@
-<body class="dash-body-container">
-  <div>
-    <h1>Similar Products</h1>
+<div class="docs-example-viewer-wrapper">
+  <div class="docs-example-viewer-title-spacer">
+    <h1 class="al-title">Similar Prodcts</h1>
   </div>
+</div>
 
-  <div class="">
-    <div class="d-flex justify-content-start card-deck-container mb-4">
-      <div class="a-container" *ngFor="let element of bookList">
-        <mat-card
-          class="
-            mat-card mat-focus-indicator
-            book-card
-            mat-elevation-z2
-            cards-pos
-          "
-        >
-          <mat-card-content class="mat-card-content image-card">
-            <span
-              matTooltip="{{ element.title }}"
-              matTooltipPosition="below"
-              matTooltipClass="custom-tooltip"
-              aria-label="Book title"
-              class="mat-tooltip-trigger"
-              aria-describedby="cdk-describedby-message-1"
-              ><img
-                alt="Book cover image"
-                class="zoom"
-                [src]="imgBasePath + element.coverFileName"
-                alt=""
-            /></span>
-            <div class="">
-              <a
-                routerLink="/productpage"
-                routerLinkActive="active"
-                (click)="sendBookId(element.bookId)"
-              >
-                <span class="text">
-                  <b>{{ element.title }}</b>
-                </span>
-              </a>
-            </div>
-            <p>₹{{ element.price }}.00</p>
-            <div>
-              <button
-                (click)="addToCart(element)"
-                type="button"
-                class="btn btn-primary"
-              >
-                <fa-icon [icon]="faStar"></fa-icon>
-                Add to Cart
-              </button>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
+<div class="d-flex justify-content-start p-2 ng-star-inserted">
+  <div class="card-deck-container" *ngFor="let element of bookList">
+    <div class="p-1 ng-star-inserted">
+      <mat-card class="mat-card mat-focus-indicator book-card mat-elevation-z2"
+        ><mat-card-content class="mat-card-content image-card"
+          ><img
+            alt="Book cover image"
+            class="mat-card-image preview-image"
+            class="zoom"
+            [src]="imgBasePath + element.coverFileName" /></mat-card-content
+        ><mat-card-content class="mat-card-content"
+          ><div class="card-title">
+            <a
+              routerLink="/productpage"
+              routerLinkActive="active"
+              (click)="sendBookId(element.bookId)"
+              ><strong>{{ element.title }}</strong></a
+            >
+          </div>
+          <p>₹{{ element.price }}.00</p>
+          <div>
+            <button
+              (click)="addToCart(element)"
+              type="button"
+              class="btn btn-primary"
+            >
+              <fa-icon [icon]="faStar"></fa-icon>
+              Add to Cart
+            </button>
+          </div></mat-card-content
+        ></mat-card
+      >
     </div>
   </div>
-</body>
+</div>
+<!-- 
+<div class="col-md-3">
+  <div class="d-flex justify-content-start card-deck-container mb-4">
+    <div class="a-container" *ngFor="let element of bookList">
+      <mat-card
+        class="
+          mat-card mat-focus-indicator
+          book-card
+          mat-elevation-z2
+          cards-pos
+        "
+      >
+        <mat-card-content class="mat-card-content image-card">
+          <span
+            matTooltip="{{ element.title }}"
+            matTooltipPosition="below"
+            matTooltipClass="custom-tooltip"
+            aria-label="Book title"
+            class="mat-tooltip-trigger"
+            aria-describedby="cdk-describedby-message-1"
+            ><img
+              alt="Book cover image"
+              class="zoom"
+              [src]="imgBasePath + element.coverFileName"
+              alt=""
+          /></span>
+          <div class="">
+            <a
+              routerLink="/productpage"
+              routerLinkActive="active"
+              (click)="sendBookId(element.bookId)"
+            >
+              <span class="text">
+                <b>{{ element.title }}</b>
+              </span>
+            </a>
+          </div>
+          <p>₹{{ element.price }}.00</p>
+          <div>
+            <button
+              (click)="addToCart(element)"
+              type="button"
+              class="btn btn-primary"
+            >
+              <fa-icon [icon]="faStar"></fa-icon>
+              Add to Cart
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div> -->

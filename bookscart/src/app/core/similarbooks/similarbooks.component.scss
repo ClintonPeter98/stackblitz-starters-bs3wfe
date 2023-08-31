@@ -91,3 +91,17 @@
   max-width: 250px;
   width: 100%;
 }
+.docs-example-viewer-wrapper {
+  border: 0;
+  // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
+  margin: 1em auto;
+  border-radius: 4px;
+}
+
+.docs-example-viewer-title-spacer {
+  border-radius: 10px;
+  flex: 1 1 auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: azure;
+}
