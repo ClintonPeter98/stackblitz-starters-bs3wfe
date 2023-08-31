@@ -18,7 +18,6 @@ export class ProductpageComponent implements OnInit {
   constructor(public dataService: DataService, private http: HttpClient) {
     this.subscription = this.dataService.bookId$.subscribe((bookId) => {
       this.receivedBookId = bookId;
-      console.log('book id recived in product page');
       this.handle();
     });
   }
@@ -28,19 +27,12 @@ export class ProductpageComponent implements OnInit {
 
   apiUrl: string = environment.baseURl + 'Book/';
   ngOnInit() {
-    this.dataService.getBookById(this.receivedBookId).subscribe((res) => {
-      if (res.bookId > 0) {
-        this.bookDetail = res;
-      }
-    });
+    this.handle();
   }
   handle() {
-    console.log('recived onchange');
-    console.log(this.receivedBookId);
     this.dataService.getBookById(this.receivedBookId).subscribe((res) => {
       if (res.bookId > 0) {
         this.bookDetail = res;
-        console.log(this.bookDetail);
       }
     });
   }

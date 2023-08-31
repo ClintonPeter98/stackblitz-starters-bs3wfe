@@ -17,6 +17,7 @@ export class SimilarbooksComponent implements OnInit {
   constructor(public dataService: DataService, private http: HttpClient) {
     this.subscription = this.dataService.bookId$.subscribe((bookId) => {
       this.receivedBookId = bookId;
+      this.getsimilarbook();
     });
   }
   faStar = faCartShopping;
@@ -24,6 +25,9 @@ export class SimilarbooksComponent implements OnInit {
   imgBasePath = environment.ImageUrl;
   title = 'Dash Board';
   ngOnInit(): void {
+    this.getsimilarbook();
+  }
+  getsimilarbook() {
     this.dataService
       .getSimilarBookById(this.receivedBookId)
       .subscribe((res) => {
@@ -35,10 +39,8 @@ export class SimilarbooksComponent implements OnInit {
   public addToCart(element: book) {
     this.dataService.add(element);
   }
-  @Output() bookIdClicked = new EventEmitter<string>();
 
   sendBookId(bookId: number): void {
-    this.bookIdClicked.emit(bookId.toString());
     this.dataService.setBookId(bookId);
   }
 }
