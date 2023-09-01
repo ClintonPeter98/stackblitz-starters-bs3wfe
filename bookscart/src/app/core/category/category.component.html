@@ -61,7 +61,7 @@
       [max]="maxPrice"
       [(ngModel)]="selectedPrice"
       (input)="updatePriceFilter()"
-      tickInterval="1"
+      tickInterval="0"
       thumbLabel
     >
       <input
@@ -70,9 +70,9 @@
         [(ngModel)]="selectedPrice"
         #slider
       /> </mat-slider
-    ><span class="slider-value">{{ selectedPrice }}</span>
+    ><span class="slider-value"></span>
   </div>
   <div>
-    <p>{{ minPrice }} to {{ maxPrice }}</p>
+    <p>{{ minPrice }} to {{ selectedPrice }}</p>
   </div>
 </div>

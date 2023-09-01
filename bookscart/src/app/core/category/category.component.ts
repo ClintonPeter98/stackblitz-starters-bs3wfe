@@ -17,8 +17,8 @@ export class CategoryComponent {
     this.getcategoryList();
   }
   minPrice = 111;
-  maxPrice = 2111;
-  selectedPrice = 250;
+  maxPrice = 555555;
+  selectedPrice = 111;
 
   activeCategory: string | null = null;
   categoryList: category[] = [];
