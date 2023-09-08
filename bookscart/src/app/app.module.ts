@@ -24,6 +24,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { ProductpageComponent } from './core/productpage/productpage.component';
 import { SimilarbooksComponent } from './core/similarbooks/similarbooks.component';
+import { SpinnerComponent } from './core/spinner/spinner.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,7 @@ import { SimilarbooksComponent } from './core/similarbooks/similarbooks.componen
     CategoryComponent,
     ProductpageComponent,
     SimilarbooksComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,7 @@ import { SimilarbooksComponent } from './core/similarbooks/similarbooks.componen
     MatSnackBarModule,
     MatSliderModule,
     MatInputModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

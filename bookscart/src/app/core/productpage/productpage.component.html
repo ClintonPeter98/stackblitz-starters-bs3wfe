@@ -54,4 +54,9 @@
     </div>
   </div>
 </div>
-<app-similarbooks></app-similarbooks>
+<div *ngIf="loading; else bookList">
+  <app-spinner></app-spinner>
+</div>
+<ng-template #bookList>
+  <app-similarbooks></app-similarbooks>
+</ng-template>
