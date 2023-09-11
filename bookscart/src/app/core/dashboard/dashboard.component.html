@@ -16,6 +16,9 @@
           >
             <mat-card-content class="mat-card-content image-card">
               <span
+                routerLink="/productpage"
+                routerLinkActive="active"
+                (click)="sendBookId(element.bookId)"
                 matTooltip="{{ element.title }}"
                 matTooltipPosition="below"
                 matTooltipClass="custom-tooltip"
