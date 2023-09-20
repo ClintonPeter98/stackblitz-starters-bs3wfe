@@ -7,6 +7,9 @@ import { AboutComponent } from './core/about/about.component';
 import { ProductComponent } from './core/product/product.component';
 import { ContactComponent } from './core/contact/contact.component';
 import { ProductpageComponent } from './core/productpage/productpage.component';
+import { RegisterComponent } from './core/register/register.component';
+import { LoginComponent } from './core/login/login.component';
+import { LoginFailedComponent } from './core/login-failed/login-failed.component';
 
 const routes: Routes = [
   {
@@ -37,6 +40,18 @@ const routes: Routes = [
   {
     path: 'productpage',
     component: ProductpageComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'login-failed',
+    component: LoginFailedComponent,
   },
 ];
 

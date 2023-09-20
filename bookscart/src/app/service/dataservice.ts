@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { book } from '../core/model/bookmodel';
@@ -6,6 +6,7 @@ import { CartProduct } from '../core/model/CartProduct';
 import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
 import { category } from '../core/model/category';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { loginmodel } from '../core/model/loginmodel';
 @Injectable({
   providedIn: 'root',
 })
@@ -105,5 +106,20 @@ export class DataService {
 
   public getPriceFilter(): Observable<number | null> {
     return this.priceFilterSubject.asObservable();
+  }
+
+  login(loginModel: loginmodel): Observable<any> {
+    console.log('hi');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    console.log('hi');
+    // Make the POST request
+    console.log('hi');
+    return this.http.post(
+      environment.baseURl + 'login', // Adjust the URL as needed
+      loginModel,
+      { headers: headers }
+    );
   }
 }

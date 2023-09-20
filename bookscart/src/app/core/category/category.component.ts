@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from '../../service/dataservice';
-import { HttpClient } from '@angular/common/http';
 import { category } from '../model/category';
 
 @Component({
@@ -9,11 +8,7 @@ import { category } from '../model/category';
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent {
-  constructor(
-    public dataService: DataService,
-    private http: HttpClient,
-    private cdRef: ChangeDetectorRef
-  ) {
+  constructor(public dataService: DataService) {
     this.getcategoryList();
   }
   minPrice = 111;

@@ -60,13 +60,13 @@
       class="slider"
       [min]="minPrice"
       [max]="maxPrice"
-      [(ngModel)]="selectedPrice"
       (input)="updatePriceFilter()"
       tickInterval="0"
       thumbLabel
     >
       <input
         matSliderThumb
+        name="selectedPrice"
         (input)="onSliderChange($event)"
         [(ngModel)]="selectedPrice"
         #slider

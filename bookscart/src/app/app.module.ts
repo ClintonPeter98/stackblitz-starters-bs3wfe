@@ -26,6 +26,9 @@ import { ProductpageComponent } from './core/productpage/productpage.component';
 import { SimilarbooksComponent } from './core/similarbooks/similarbooks.component';
 import { SpinnerComponent } from './core/spinner/spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoginComponent } from './core/login/login.component';
+import { RegisterComponent } from './core/register/register.component';
+import { LoginFailedComponent } from './core/login-failed/login-failed.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ProductpageComponent,
     SimilarbooksComponent,
     SpinnerComponent,
+    LoginComponent,
+    RegisterComponent,
+    LoginFailedComponent,
   ],
   imports: [
     BrowserModule,
