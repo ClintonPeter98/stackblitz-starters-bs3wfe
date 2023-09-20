@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment.development';
 import { loginmodel } from '../model/loginmodel';
 import { DataService } from '../../service/dataservice';
 
