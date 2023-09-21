@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { loginmodel } from '../model/loginmodel';
 import { DataService } from '../../service/dataservice';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,31 +11,28 @@ import { DataService } from '../../service/dataservice';
 })
 export class LoginComponent {
   constructor(private router: Router, private authService: DataService) {}
+  user = { username: '', password: '' };
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      const loginModel: loginmodel = {
+        userId: 0,
+        firstName: '',
+        lastName: '',
+        username: this.user.username,
+        password: this.user.password,
+        gender: '',
+        userTypeId: 0,
+      };
 
-  // Method to handle login
-  loginUser(username: string, password: string) {
-    const loginModel: loginmodel = {
-      userId: 0,
-      firstName: '',
-      lastName: '',
-      username: username,
-      password: password,
-      gender: '',
-      userTypeId: 0,
-    };
-
-    this.authService.login(loginModel).subscribe(
-      (response) => {
-        // Handle successful login response here
-        console.log('hi');
-        this.router.navigate(['/home']);
-        console.log('hi');
-      },
-      (error) => {
-        // Handle login error here
-        console.error('Login failed', error);
-        this.router.navigate(['/login-failed']);
-      }
-    );
+      this.authService.login(loginModel).subscribe(
+        (response) => {
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          console.error('Login failed', error);
+          this.router.navigate(['/login-failed']);
+        }
+      );
+    }
   }
 }
