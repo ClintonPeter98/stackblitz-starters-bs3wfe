@@ -1,59 +1,66 @@
 <div class="mt-5 body-container">
-  <div class="col-lg-3 card-container">
-    <mat-card
-      class="
-        mat-card mat-focus-indicator
-        book-card
-        mat-elevation-z2
-        card-deck-container
-      "
-      *ngFor="let element of cartService.cartItems"
-    >
-      <mat-card-content class="mat-card-content image-card img-container">
-        <span
-          mattooltipclass="example-tooltip"
-          aria-label="Book title"
-          class="mat-tooltip-trigger"
-          aria-describedby="cdk-describedby-message-1"
-          ><img
-            alt="Book cover image"
-            [src]="imgBasePath + element.coverFileName"
-            class="zoom"
-            alt=""
-        /></span>
-        <!-- [src]="imgBasePath + element.coverFileName"--></mat-card-content
+  <div *ngIf="cartItems.length === 0">
+    <img [src]="imageUrl" alt="My Image" />
+    <p>Your cart is empty. Please add items to your cart.</p>
+  </div>
+  <div *ngIf="cartItems.length > 0">
+    <!-- Display the cart items here -->
+    <div class="col-lg-3 card-container">
+      <mat-card
+        class="
+          mat-card mat-focus-indicator
+          book-card
+          mat-elevation-z2
+          card-deck-container
+        "
+        *ngFor="let element of cartService.cartItems"
       >
-      <mat-card-content>
-        <div class="">
-          <a
-            routerLink="/productpage"
-            routerLinkActive="active"
-            (click)="sendBookId(element.bookId)"
-          >
-            <span class="text">
-              <b>{{ element.title }}</b>
-            </span>
-            <!-- {{ element.title }} -->
-          </a>
-        </div>
-        <p>
-          ₹
-          {{ element.price }}.00
-        </p>
-        <!-- {{ element.price }} -->
-      </mat-card-content>
-      <mat-card-content>
-        <div>
-          <span type="input" text="number">{{ element.qty }}</span>
-        </div>
-        <button
-          type="button"
-          (click)="removeProduct(element)"
-          class="btn btn-primary"
+        <mat-card-content class="mat-card-content image-card img-container">
+          <span
+            mattooltipclass="example-tooltip"
+            aria-label="Book title"
+            class="mat-tooltip-trigger"
+            aria-describedby="cdk-describedby-message-1"
+            ><img
+              alt="Book cover image"
+              [src]="imgBasePath + element.coverFileName"
+              class="zoom"
+              alt=""
+          /></span>
+          <!-- [src]="imgBasePath + element.coverFileName"--></mat-card-content
         >
-          Delete
-        </button>
-      </mat-card-content>
-    </mat-card>
+        <mat-card-content>
+          <div class="">
+            <a
+              routerLink="/productpage"
+              routerLinkActive="active"
+              (click)="sendBookId(element.bookId)"
+            >
+              <span class="text">
+                <b>{{ element.title }}</b>
+              </span>
+              <!-- {{ element.title }} -->
+            </a>
+          </div>
+          <p>
+            ₹
+            {{ element.price }}.00
+          </p>
+          <!-- {{ element.price }} -->
+        </mat-card-content>
+        <mat-card-content>
+          <div>
+            <span type="input" text="number">{{ element.qty }}</span>
+          </div>
+          <button
+            type="button"
+            (click)="removeProduct(element)"
+            class="btn btn-primary"
+          >
+            Delete
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>

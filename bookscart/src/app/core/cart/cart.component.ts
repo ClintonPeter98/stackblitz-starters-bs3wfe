@@ -34,6 +34,9 @@ export class CartComponent implements OnInit {
       this.bookList = this.cartService.cartItems;
     });
   }
+
+  
+
   public removeProduct(element: book) {
     this.cartService.removeProduct(element);
     this.cartService.cartcount();
