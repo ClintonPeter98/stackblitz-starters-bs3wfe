@@ -25,3 +25,16 @@
   margin: auto;
   flex-direction: column;
 }
+.image-container {
+  height: 100%;
+  max-height: 50px;
+  width: 100%;
+  max-width: 50px;
+}
+
+.container {
+  color: rebeccapurple;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}

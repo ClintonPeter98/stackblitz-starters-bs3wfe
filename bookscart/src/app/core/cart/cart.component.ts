@@ -15,27 +15,26 @@ export class CartComponent implements OnInit {
       this.cartItems = cartItems;
     });
   }
+  cartimageUrl: string = 'https://www.svgrepo.com/show/18697/sad-face.svg';
   bookList: book[] = [];
   public count: number = 0;
   imgBasePath = environment.ImageUrl;
 
   cartItems: book[] = [];
 
+  ngOnInit() {
+    this.cartService.cartitems$.subscribe(() => {
+      this.count = this.cartService.cartcount();
+      this.bookList = this.cartService.cartItems;
+      console.log(this.count);
+    });
+  }
   updateQuantity(itemId: number) {
     const updatedItem = this.cartItems.find((item) => item.bookId === itemId);
     if (updatedItem) {
       this.cartService.updateCartItemQuantity(itemId, updatedItem.qty);
     }
   }
-
-  ngOnInit() {
-    this.cartService.cartitems$.subscribe(() => {
-      this.count = this.cartService.cartcount();
-      this.bookList = this.cartService.cartItems;
-    });
-  }
-
-  
 
   public removeProduct(element: book) {
     this.cartService.removeProduct(element);

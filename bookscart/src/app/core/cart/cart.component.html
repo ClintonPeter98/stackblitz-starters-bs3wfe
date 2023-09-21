@@ -1,9 +1,13 @@
 <div class="mt-5 body-container">
-  <div *ngIf="cartItems.length === 0">
-    <img [src]="imageUrl" alt="My Image" />
-    <p>Your cart is empty. Please add items to your cart.</p>
+  <div *ngIf="cartService.cartItems.length === 0" class="container">
+    <div>
+      <p>Your cart is empty.Please add items to your cart.</p>
+    </div>
+    <div>
+      <img class="image-container" [src]="cartimageUrl" alt="My Image" />
+    </div>
   </div>
-  <div *ngIf="cartItems.length > 0">
+  <div *ngIf="cartService.cartItems.length > 0">
     <!-- Display the cart items here -->
     <div class="col-lg-3 card-container">
       <mat-card
