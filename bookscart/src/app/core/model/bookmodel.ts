@@ -7,3 +7,8 @@ export interface book {
   coverFileName: string;
   qty: number;
 }
+
+export interface cartbook {
+  book: book;
+  quantity: number;
+}

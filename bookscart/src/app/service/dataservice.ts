@@ -1,12 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { book } from '../core/model/bookmodel';
+import { book, cartbook } from '../core/model/bookmodel';
 import { CartProduct } from '../core/model/CartProduct';
-import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  ReplaySubject,
+  Subject,
+  filter,
+  map,
+} from 'rxjs';
 import { category } from '../core/model/category';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { loginmodel } from '../core/model/loginmodel';
+import { cartmodel, loginmodel, userDetails } from '../core/model/loginmodel';
 @Injectable({
   providedIn: 'root',
 })
@@ -20,22 +27,24 @@ export class DataService {
   cartItems$ = new BehaviorSubject<book[]>(this.cartItem);
   private bookIdSubject = new BehaviorSubject<number>(this.bookId);
   bookId$ = this.bookIdSubject.asObservable();
+  private isAuthenticated = false;
 
   setBookId(bookId: number) {
     this.bookIdSubject.next(bookId);
   }
-  // ... other methods to update cart items ...
 
   updateCartItemQuantity(itemId: number, newQuantity: number) {
+    console.log('item quantity updated');
     const itemIndex = this.cartItems.findIndex(
       (item) => item.bookId === itemId
     );
-
     if (itemIndex !== -1) {
       this.cartItems[itemIndex].qty = newQuantity;
-      this.cartItems$.next(this.cartItems);
+      this.cartUpdates.next(this.cartItems.length.toString());
+      this.getTotalValue();
     }
   }
+
   getCategoryList = () => {
     return this.http.get<category[]>(
       environment.baseURl + 'Book/GetCategoriesList'
@@ -59,6 +68,25 @@ export class DataService {
     return this.cartItems.reduce((c, t1) => t1.qty + c, 0);
   }
   public cartItems: CartProduct[] = [];
+
+  addItemtocart(userId: string, bookId: number) {
+    const cartsmodel: cartmodel = {
+      usersId: userId.toString(),
+      booksid: bookId,
+    };
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    this.http.post(
+      environment.baseURl + '/ShoppingCart/AddToCart/',
+      cartsmodel,
+      {
+        headers: headers,
+      }
+    );
+  }
+
   add(product: book) {
     console.log('item added to cart.!');
     let item: CartProduct = this.cartItems.find(
@@ -76,14 +104,16 @@ export class DataService {
   }
 
   public removeProduct(element: book) {
-    this.cartItems.splice(
-      this.cartItems.findIndex((element) => element.bookId === element.bookId),
-      1
+    const itemIndex = this.cartItems.findIndex(
+      (item) => item.bookId === element.bookId
     );
+    if (itemIndex !== -1) {
+      this.cartItems.splice(itemIndex, 1);
+    }
     this.cartUpdates.next(this.cartItems.length);
     this.openNotification('Product removed from cart.');
   }
-  openNotification(message: string) {
+  public openNotification(message: string) {
     this.snackBar.open(message, 'Dismiss', {
       duration: 3000, // Display duration in milliseconds
     });
@@ -108,18 +138,39 @@ export class DataService {
     return this.priceFilterSubject.asObservable();
   }
 
-  login(loginModel: loginmodel): Observable<any> {
-    console.log('hi');
+  public setCartPrice(userId: number) {
+    return this.http
+      .get<any>(environment.baseURl + 'ShoppingCart/' + userId)
+      .pipe(map((response) => response));
+  }
+
+  login(loginModel: userDetails): Observable<loginmodel> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    console.log('hi');
-    // Make the POST request
-    console.log('hi');
-    return this.http.post(
+    this.isAuthenticated = true;
+    return this.http.post<loginmodel>(
       environment.baseURl + 'login', // Adjust the URL as needed
       loginModel,
       { headers: headers }
+    );
+  }
+
+  getUserId(): string | null {
+    return sessionStorage.getItem('userId'); // Retrieve from session storage
+  }
+  logout() {
+    this.isAuthenticated = false;
+    this.openNotification('Logged Out.');
+  }
+  isAuthenticatedUser(): boolean {
+    return this.isAuthenticated;
+  }
+
+  getTotalValue() {
+    return this.cartItems.reduce(
+      (total, item) => total + item.price * item.qty,
+      0
     );
   }
 }

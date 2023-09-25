@@ -45,9 +45,17 @@ export class DashboardComponent implements OnInit {
   }
 
   gridColumns = 3;
-
+  userId: any;
   public addToCart(element: book) {
     this.dataService.add(element);
+    var loguserId = this.dataService.getUserId();
+    if (loguserId != null) {
+      this.userId = loguserId;
+    } else {
+      this.userId = 0;
+    }
+    console.log(this.userId, element.bookId);
+    this.dataService.addItemtocart(this.userId, element.bookId);
   }
 
   toggleGridColumns() {

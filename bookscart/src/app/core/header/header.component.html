@@ -28,10 +28,27 @@
             >Contact</a
           >
         </li>
+        <li *ngIf="this.authService.isAuthenticatedUser()" class="nav__item">
+          <a class="nav__link" routerLink="/contacts" routerLinkActive="active"
+            ><fa-icon [icon]="wishlist"></fa-icon>Wishlist</a
+          >
+        </li>
         <li class="nav__item">
-          <a class="nav__link" routerLink="/login" routerLinkActive="active"
+          <a
+            class="nav__link"
+            *ngIf="!this.authService.isAuthenticatedUser()"
+            routerLink="/login"
+            routerLinkActive="active"
             >Login</a
           >
+          <a
+            onclick=""
+            class="nav__link"
+            (click)="logout()"
+            *ngIf="this.authService.isAuthenticatedUser()"
+          >
+            Logout
+          </a>
         </li>
       </ul>
     </nav>

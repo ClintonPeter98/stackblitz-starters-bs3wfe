@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { loginmodel } from '../model/loginmodel';
+import { loginmodel, userDetails } from '../model/loginmodel';
 import { DataService } from '../../service/dataservice';
 import { NgForm } from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class LoginComponent {
   user = { username: '', password: '' };
   onSubmit(form: NgForm) {
     if (form.valid) {
-      const loginModel: loginmodel = {
+      const loginModel: userDetails = {
         userId: 0,
         firstName: '',
         lastName: '',
@@ -26,10 +26,17 @@ export class LoginComponent {
 
       this.authService.login(loginModel).subscribe(
         (response) => {
+          console.log(response.userDetails.userId.toString());
+          sessionStorage.setItem(
+            'userId',
+            response.userDetails.userId.toString()
+          );
+
           this.router.navigate(['/home']);
         },
         (error) => {
-          console.error('Login failed', error);
+          this.authService.logout();
+          this.authService.openNotification('Login failed.');
           this.router.navigate(['/login-failed']);
         }
       );

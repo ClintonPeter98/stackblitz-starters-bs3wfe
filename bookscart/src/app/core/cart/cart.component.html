@@ -1,4 +1,4 @@
-<div class="mt-5 body-container">
+<!-- <div class="mt-5 body-container">
   <div *ngIf="cartService.cartItems.length === 0" class="container">
     <div>
       <p>Your cart is empty.Please add items to your cart.</p>
@@ -8,7 +8,6 @@
     </div>
   </div>
   <div *ngIf="cartService.cartItems.length > 0">
-    <!-- Display the cart items here -->
     <div class="col-lg-3 card-container">
       <mat-card
         class="
@@ -30,8 +29,7 @@
               [src]="imgBasePath + element.coverFileName"
               class="zoom"
               alt=""
-          /></span>
-          <!-- [src]="imgBasePath + element.coverFileName"--></mat-card-content
+          /></span></mat-card-content
         >
         <mat-card-content>
           <div class="">
@@ -43,14 +41,12 @@
               <span class="text">
                 <b>{{ element.title }}</b>
               </span>
-              <!-- {{ element.title }} -->
             </a>
           </div>
           <p>
             ₹
             {{ element.price }}.00
           </p>
-          <!-- {{ element.price }} -->
         </mat-card-content>
         <mat-card-content>
           <div>
@@ -66,5 +62,165 @@
         </mat-card-content>
       </mat-card>
     </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="docs-example-viewer-wrapper">
+    <mat-card class="mat-card mat-focus-indicator ng-star-inserted"
+      ><mat-card-content class="mat-card-content"
+        ><table class="table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th>MRP</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+        </table></mat-card-content
+      >
+      <table class="table">
+        <tbody>
+          <tr class="ng-star-inserted">
+            <mat-card-content
+              class="mat-card-content mat-elevation-z2"
+              *ngFor="let element of cartService.cartItems"
+              ><td>
+                <img
+                  mattooltipposition="after"
+                  class="mat-tooltip-trigger img"
+                  [src]="imgBasePath + element.coverFileName"
+                  aria-describedby="cdk-describedby-message-166"
+                  cdk-describedby-host=""
+                />
+              </td>
+              <td>
+                <a
+                  routerLink="/productpage"
+                  routerLinkActive="active"
+                  (click)="sendBookId(element.bookId)"
+                  >{{ element.title }}</a
+                >
+              </td>
+              <td>₹{{ element.price }}.00</td>
+              <td>
+                <div class="btn-container">
+                  <div class="btn-minus">
+                    <button
+                      mat-icon-button=""
+                      color="warn"
+                      class="
+                        btn btn-primary
+                        mat-focus-indicator
+                        mat-icon-button
+                        mat-button-base
+                        mat-warn
+                        mat-button-disabled
+                      "
+                      (click)="updateQuantitydecrease(element)"
+                    >
+                      <fa-icon [icon]="remove_circle"></fa-icon
+                      ><span
+                        matripple=""
+                        class="
+                          mat-ripple mat-button-ripple mat-button-ripple-round
+                        "
+                      ></span
+                      ><span class="mat-button-focus-overlay"></span>
+                    </button>
+                  </div>
+                  <div class="div-quantity" [(ngModel)]="element.qty">
+                    {{ element.qty }}
+                  </div>
+                  <div class="btn-plus">
+                    <button
+                      mat-icon-button=""
+                      color="warn"
+                      class="
+                        btn btn-primary
+                        mat-focus-indicator
+                        mat-icon-button
+                        mat-button-base
+                        mat-warn
+                      "
+                      (click)="updateQuantityIncrease(element)"
+                    >
+                      <fa-icon [icon]="add_circle"></fa-icon
+                      ><span
+                        matripple=""
+                        class="
+                          mat-ripple mat-button-ripple mat-button-ripple-round
+                        "
+                      ></span
+                      ><span class="mat-button-focus-overlay"></span>
+                    </button>
+                  </div>
+                </div>
+              </td>
+              <td>₹{{ element.qty * element.price }}.00</td>
+              <td>
+                <button
+                  mat-icon-button=""
+                  color="accent"
+                  mattooltip="Delete item"
+                  class="
+                    mat-focus-indicator
+                    mat-tooltip-trigger
+                    mat-icon-button
+                    mat-button-base
+                    mat-accent
+                  "
+                  aria-describedby="cdk-describedby-message-165"
+                  cdk-describedby-host=""
+                >
+                  <span class="mat-button-wrapper">
+                    <fa-icon
+                      [icon]="trash"
+                      (click)="removeProduct(element)"
+                    ></fa-icon></span
+                  ><span
+                    matripple=""
+                    class="mat-ripple mat-button-ripple mat-button-ripple-round"
+                  ></span
+                  ><span class="mat-button-focus-overlay"></span>
+                </button></td
+            ></mat-card-content>
+          </tr>
+        </tbody>
+        <tfoot class="table">
+          <tr>
+            <mat-card-content class="mat-card-content"
+              ><th></th>
+              <th></th>
+              <th></th>
+              <td>Cart Total:</td>
+              <th>₹{{ getTotalValue() }}.00</th>
+              <th>
+                <button
+                  mat-raised-button=""
+                  color="warn"
+                  class="
+                    mat-focus-indicator
+                    mat-elevation-z4
+                    mat-raised-button
+                    mat-button-base
+                    mat-warn
+                  "
+                  tabindex="0"
+                >
+                  <span class="mat-button-wrapper">CheckOut</span
+                  ><span
+                    matripple=""
+                    class="mat-ripple mat-button-ripple"
+                  ></span
+                  ><span class="mat-button-focus-overlay"></span>
+                </button></th
+            ></mat-card-content>
+          </tr>
+        </tfoot></table
+    ></mat-card>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChange } from '@angular/core';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { DataService } from '../../service/dataservice';
 
@@ -10,15 +10,22 @@ import { DataService } from '../../service/dataservice';
 })
 export class HeaderComponent implements OnInit {
   faStar = faCartShopping;
+  wishlist =faHeart;
   books = faBookOpen;
   title = 'Book Cart';
   cartCount: any;
-  constructor(private cartService: DataService) {}
+  constructor(public authService: DataService) {}
 
   ngOnInit() {
     // Subscribe to changes in the cart count
-    this.cartService.cartitems$.subscribe(() => {
-      this.cartCount = this.cartService.cartcount();
+    this.authService.cartitems$.subscribe(() => {
+      this.cartCount = this.authService.cartcount();
     });
+    sessionStorage.removeItem('userId');
+  }
+
+  logout() {
+    this.authService.logout();
+    sessionStorage.removeItem('userId');
   }
 }

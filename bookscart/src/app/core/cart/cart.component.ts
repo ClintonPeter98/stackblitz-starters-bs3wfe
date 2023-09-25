@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { DataService } from '../../service/dataservice';
 import { book } from '../model/bookmodel';
+import {
+  faCircleMinus,
+  faCirclePlus,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cart',
@@ -9,6 +14,9 @@ import { book } from '../model/bookmodel';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
+  add_circle = faCirclePlus;
+  remove_circle = faCircleMinus;
+  trash = faTrash;
   title = 'Cart';
   constructor(public cartService: DataService) {
     this.cartService.cartItems$.subscribe((cartItems) => {
@@ -22,18 +30,36 @@ export class CartComponent implements OnInit {
 
   cartItems: book[] = [];
 
+  totalPrice = 99;
+  elementPrice = 99;
   ngOnInit() {
     this.cartService.cartitems$.subscribe(() => {
       this.count = this.cartService.cartcount();
       this.bookList = this.cartService.cartItems;
       console.log(this.count);
     });
+    this.updateTotalPrice();
   }
-  updateQuantity(itemId: number) {
-    const updatedItem = this.cartItems.find((item) => item.bookId === itemId);
-    if (updatedItem) {
-      this.cartService.updateCartItemQuantity(itemId, updatedItem.qty);
+
+  updateQuantityIncrease(item: book) {
+    this.cartService.updateCartItemQuantity(item.bookId, item.qty++);
+  }
+  updateQuantitydecrease(item: book) {
+    console.log(item.bookId);
+    if (item.qty > 1) {
+      this.cartService.updateCartItemQuantity(item.bookId, item.qty--);
     }
+  }
+
+  getTotalValue() {
+    return this.cartService.getTotalValue();
+  }
+
+  updateTotalPrice(): void {
+    let x: any = [];
+    this.cartService.setCartPrice(2493).subscribe({
+      next: (res) => console.log(res),
+    });
   }
 
   public removeProduct(element: book) {
